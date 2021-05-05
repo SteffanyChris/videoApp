@@ -1,9 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
+import Screen from '../screen/Screen';
 
 function Search() {
 	return(
-		<Text> Search Screen</Text>
+		<Screen>
+			<Text> Search Screen</Text>
+		</Screen>
 	)
 }
 
