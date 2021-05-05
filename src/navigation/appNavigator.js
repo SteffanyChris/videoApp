@@ -16,9 +16,7 @@ export default function AppNavigator() {
 			<Stack.Navigator 
 				screenOptions={{
 					headerShown: true,
-					headerStyle: {
-						backgroundColor: 'transparent'
-					}
+					headerTransparent: true,
 				}}>
 				<Stack.Screen 
 					name='Discover' 
@@ -34,7 +32,7 @@ export default function AppNavigator() {
 						)
 					})}
 				/>
-				<Stack.Screen name='MovieDetails' component={MovieDetails} />
+				<Stack.Screen name='Details' component={MovieDetails} />
 				<Stack.Screen name='Search' component={Search} />
 			</Stack.Navigator>
 		</NavigationContainer>
