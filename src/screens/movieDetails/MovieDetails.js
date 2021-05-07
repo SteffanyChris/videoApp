@@ -5,7 +5,7 @@ import Screen from '../screen/Screen';
 import styles from './MovieDetails.styles';
 import { baseImageUri } from '../../utils/imageUtils';
 
-function MovieDetails({route}) {
+function MovieDetails({route, navigation}) {
 	const { movieDetails } = route.params;
 	return(
 		<Screen noPadding>
@@ -21,6 +21,7 @@ function MovieDetails({route}) {
 						type="material"
 						color="#59bfff"
 						containerStyle={styles.icon}
+						onPress={() => navigation.navigate('Video')}
 					/>
 				</View>
 			</View>
