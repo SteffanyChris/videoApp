@@ -1,7 +1,6 @@
 import actionTypes from './actionTypes';
 
 const INITIAL_STATE = {
-	popularMovies: [],
 	popularTvShows: [],
 	isLoading: false,
 	errorMessage: ''
@@ -10,7 +9,6 @@ const INITIAL_STATE = {
 export default (state=INITIAL_STATE, action ) => {
 	switch(action.type){
 		case actionTypes.FETCH_POPULAR_SHOWS_START:
-		case actionTypes.FETCH_POPULAR_MOVIES_START:
 			return{
 				...state,
 				isLoading: true
@@ -19,16 +17,9 @@ export default (state=INITIAL_STATE, action ) => {
 			return{
 				...state,
 				isLoading: false,
-				popularTvShows: action.payload
-			}
-		case actionTypes.FETCH_POPULAR_MOVIES_SUCCESS:
-			return{
-				...state,
-				isLoading: false,
-				popularMovies: action.payload
+				popularTvShows: [...state.popularTvShows, ...action.payload]
 			}
 		case actionTypes.FETCH_POPULAR_SHOWS_FAILED:
-		case actionTypes.FETCH_POPULAR_MOVIES_FAILED:
 			return{
 				...state,
 				isLoading: false,
