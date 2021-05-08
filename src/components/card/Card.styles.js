@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import colors from '../../utils/colors';
 import { screenWidth } from '../../utils/screenUtils';
 
 const screenMargin = 16;
@@ -9,7 +10,7 @@ export const cardSize = (screenWidth - 2* screenMargin ) / 3 - 3* cardMargin;
 export default StyleSheet.create({
 	container: {
 		height: hp('40%'),
-		shadowColor: '#000',
+		shadowColor: colors.black,
     	shadowOffset: { width: 2, height: 2 },
     	shadowOpacity: 0.8,
     	shadowRadius: 5,  
@@ -25,7 +26,7 @@ export default StyleSheet.create({
 		right:16,
 		bottom: 16,
 		fontSize: 26,
-		color: 'white',
+		color: colors.white,
 		fontWeight: 'bold'
 	},
 	description: {
@@ -34,13 +35,13 @@ export default StyleSheet.create({
 		right: 16,
 		bottom: 55,
 		fontSize: 16,
-		color: 'white'
+		color: colors.white
 	},
 	verticalCardContainer: {
 		height: 230,
 		width: cardSize,
-		backgroundColor: 'white',
-		shadowColor: '#000',
+		backgroundColor: colors.white,
+		shadowColor: colors.black,
     	shadowOffset: { width: 0, height: 2 },
     	shadowOpacity: 0.8,
     	shadowRadius: 5,  
@@ -56,6 +57,6 @@ export default StyleSheet.create({
 	},
 	categoryText: {
 		fontSize: 14,
-		color: 'gray',
+		color: colors.darkGray,
 	}
 })

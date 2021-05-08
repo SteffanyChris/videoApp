@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from 'react-native-elements';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
@@ -31,7 +32,7 @@ export default StyleSheet.create({
 		position: 'absolute',
 		bottom: hp('29%'),
 		right: 30,
-		shadowColor: '#000',
+		shadowColor: colors.black,
     	shadowOffset: { width: 1, height: 2 },
     	shadowOpacity: 0.8,
     	shadowRadius: 5,  
