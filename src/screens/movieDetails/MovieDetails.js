@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, ImageBackground, View } from 'react-native';
+import { Text, ImageBackground, View, TouchableOpacity } from 'react-native';
 import { Icon } from "react-native-elements";
+
 import Screen from '../screen/Screen';
 import styles from './MovieDetails.styles';
 import { baseImageUri } from '../../utils/imageUtils';
 
-function MovieDetails({route}) {
+function MovieDetails({route, navigation}) {
 	const { movieDetails } = route.params;
 	return(
 		<Screen noPadding>
@@ -15,15 +16,16 @@ function MovieDetails({route}) {
 					<Text style={styles.title}>{movieDetails.title} </Text>
 					<Text style={styles.subtitle}>Subtitle </Text>
 					<Text style={styles.description}>{movieDetails.description}</Text>
-					<Icon
-						reverse
-						name="play-arrow"
-						type="material"
-						color="#59bfff"
-						containerStyle={styles.icon}
-					/>
 				</View>
 			</View>
+			<TouchableOpacity style={styles.icon} onPress={() => navigation.navigate('Video')}>
+				<Icon
+					reverse
+					name="play-arrow"
+					type="material"
+					color="#59bfff"
+				/>
+			</TouchableOpacity>
 		</Screen>
 	)
 }
