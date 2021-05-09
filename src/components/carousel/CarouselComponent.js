@@ -3,7 +3,7 @@ import Carousel from 'react-native-snap-carousel';
 import { screenWidth } from '../../utils/screenUtils';
 import { baseImageUri } from '../../utils/imageUtils';
 import Card from '../card/Card.component';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import styles from './CarouselComponent.styles';
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,7 +13,8 @@ const CarouselComponent = ({
 	cardSize,
 	header,
 	onEndReached,
-	isLoading
+	isLoading,
+	initialLoading,
 }) => {
 
 	const [index, setIndex] = useState(0);
@@ -34,17 +35,26 @@ const CarouselComponent = ({
 	return (
 		<View>
 			<Text style={styles.header}>{header}</Text>
-			<Carousel
-				sliderWidth={screenWidth-16}
-				sliderHeight={screenWidth}
-				itemWidth={cardSize}
-				data={data}
-				renderItem={renderItem}
-				activeSlideAlignment='start'
-				inactiveSlideScale={.95}
-				onEndReached={onEndReached}
-				onSnapToItem = { index => setIndex({index}) }
-			/>
+			<View style={{flexDirection: 'row'}}>
+			{initialLoading ? 
+				<ActivityIndicator animating={initialLoading} size='large' color='black' />
+				:
+				<Carousel
+					sliderWidth={screenWidth-16}
+					sliderHeight={screenWidth}
+					itemWidth={cardSize}
+					data={data}
+					renderItem={renderItem}
+					activeSlideAlignment='start'
+					inactiveSlideScale={.95}
+					onEndReached={onEndReached}
+					onSnapToItem = { index => setIndex({index}) }
+				/>
+			}
+			{ isLoading &&
+				<ActivityIndicator animating={isLoading} color='black'/>
+			}
+			</View>
 		</View>
 	);
 }

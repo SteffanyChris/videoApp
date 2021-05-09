@@ -11,3 +11,8 @@ export const selectIsLoading = createSelector(
 	selectTv,
 	tv => tv.isLoading
 )
+
+export const selectMoreIsLoading = createSelector(
+	selectTv,
+	tv => tv.moreIsLoading
+)

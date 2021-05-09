@@ -23,11 +23,19 @@ const formatResponse = array => {
 /* Use the axios instance to make requests for popular movies and shows,
 *	handles the response to grab only the results and handles the error
 */
-export const getPopularTvShows = (page) => axiosInstance("tv/popular",{ params: { page: page }})
+export const getMoreTvShows = (page) => axiosInstance("tv/popular",{ params: { page: page }})
 	.then(resp => formatResponse(resp.data.results))
 	.catch(error => console.log(error.message))
 
-export const getPopularMovies = (page) => axiosInstance("movie/popular", { params: { page: page}})
+export const getPopularTvShows = () => axiosInstance("tv/popular")
+	.then(resp => formatResponse(resp.data.results))
+	.catch(error => console.log(error.message))
+
+export const getMoreMovies = (page) => axiosInstance("movie/popular", { params: { page: page}})
+	.then(resp => formatResponse(resp.data.results))
+	.catch(error => console.log(error.message))
+
+export const getPopularMovies = () => axiosInstance("movie/popular")
 	.then(resp => formatResponse(resp.data.results))
 	.catch(error => console.log(error.message))
 

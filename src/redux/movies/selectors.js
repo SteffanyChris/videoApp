@@ -11,3 +11,8 @@ export const selectIsLoadingMovies = createSelector(
 	[selectMovies],
 	movie => movie.isLoading
 )
+
+export const selectMoreMoviesLoading = createSelector(
+	selectMovies,
+	movie => movie.moreIsLoading
+)

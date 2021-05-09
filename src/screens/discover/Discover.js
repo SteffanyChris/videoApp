@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 
-import { fetchPopularShowsStart } from '../../redux/tv/actions';
-import { fetchPopularMoviesStart } from '../../redux/movies/actions';
+import { fetchMoreTvStart, fetchPopularShowsStart } from '../../redux/tv/actions';
+import { fetchMoreMoviesStart, fetchPopularMoviesStart } from '../../redux/movies/actions';
 import Screen from '../screen/Screen';
 import { screenWidth } from '../../utils/screenUtils';
 import { cardSize } from '../../components/card/Card.styles';
 import CarouselComponent from '../../components/carousel/CarouselComponent';
-import { selectPopularMovies } from '../../redux/movies/selectors';
-import { selectIsLoading, selectPopularTvShows } from '../../redux/tv/selectors';
+import { selectIsLoadingMovies, selectMoreMoviesLoading, selectPopularMovies } from '../../redux/movies/selectors';
+import { selectIsLoading, selectMoreIsLoading, selectPopularTvShows } from '../../redux/tv/selectors';
 import WithSpinner from '../../utils/hoc/withSpinner';
 import { selectAssetsByGenres, selectGenreIsLoading } from '../../redux/assetsByGenre/selectors';
 import { fetchTvGenreStart } from '../../redux/assetsByGenre/actions';
@@ -22,9 +22,15 @@ function Discover({
 	popularShows,
 	loadPopularMovies,
 	loadPopularShows,
+	loadMoreMovies,
+	loadMoreShows,
 	loadTvByGenre,
 	assetsByGenres,
-	genresLoading
+	genresLoading,
+	moreMoviesLoading,
+	moreTvLoading,
+	movieLoading,
+	tvLoading
 }) {
 
 	const [pagination, setPagination] = useState({
@@ -33,10 +39,10 @@ function Discover({
 	})
 
 	useEffect(() => {
-		loadPopularMovies(1),
-		loadPopularShows(1),
+		loadPopularMovies(),
+		loadPopularShows(),
 		loadTvByGenre()
-	}, [loadPopularShows, loadPopularMovies])
+	}, [])
 
 	return(
 		<Screen>
@@ -44,19 +50,23 @@ function Discover({
 				<CarouselComponent
 					cardSize={screenWidth}
 					header='Popular Movies'
+					isLoading={moreMoviesLoading}
+					initialLoading={movieLoading}
 					data={popularMovies}
 					onEndReached={() => {
-						loadPopularMovies(pagination.moviesPage)
+						loadMoreMovies(pagination.moviesPage)
 						setPagination({...pagination, moviesPage: pagination.moviesPage+1})
 					}}
 				/>
 				<CarouselComponent
 					cardType='vertical'
 					header='Popular Tv Shows'
+					isLoading={moreTvLoading}
+					initialLoading={tvLoading}
 					cardSize={cardSize+8}
 					data={popularShows}
 					onEndReached={() => {
-						loadPopularShows(pagination.showsPage)
+						loadMoreShows(pagination.showsPage)
 						setPagination({...pagination, showsPage: pagination.showsPage+1})
 					}}
 				/>
@@ -73,8 +83,10 @@ function Discover({
 }
 
 const mapDispatchToProps = dispatchEvent => ({
-	loadPopularShows: (page) =>dispatchEvent(fetchPopularShowsStart(page)),
-	loadPopularMovies: (page) =>dispatchEvent(fetchPopularMoviesStart(page)),
+	loadPopularShows: () =>dispatchEvent(fetchPopularShowsStart()),
+	loadPopularMovies: () =>dispatchEvent(fetchPopularMoviesStart()),
+	loadMoreShows: page => dispatchEvent(fetchMoreTvStart(page)),
+	loadMoreMovies: page => dispatchEvent(fetchMoreMoviesStart(page)),
 	loadTvByGenre: () => dispatchEvent(fetchTvGenreStart())
 })
 
@@ -83,7 +95,10 @@ const mapStateToProps = createStructuredSelector({
 	popularShows: selectPopularTvShows,
 	assetsByGenres: selectAssetsByGenres,
 	tvLoading: selectIsLoading,
-	genresLoading: selectGenreIsLoading
+	movieLoading: selectIsLoadingMovies,
+	genresLoading: selectGenreIsLoading,
+	moreTvLoading: selectMoreIsLoading,
+	moreMoviesLoading: selectMoreMoviesLoading
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Discover);
