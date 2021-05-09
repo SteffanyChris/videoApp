@@ -58,5 +58,30 @@ export default StyleSheet.create({
 	categoryText: {
 		fontSize: 14,
 		color: colors.darkGray,
+	},
+	horizontalContainer: {
+		flexDirection: 'row',
+		marginTop: 16,
+		height: hp('15%'),
+		backgroundColor: colors.white,
+	},
+	horizontalImage: {
+		flex: .3,
+	},
+	horizontalTextContainer: {
+		flex: .7,
+		margin: 8,
+		justifyContent: 'space-between',
+	},
+	horizontalTitle: {
+		fontSize: 16,
+	},
+	horizontalDescription: {
+		fontSize:20,
+	},
+	ratingContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
 	}
 })

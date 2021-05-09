@@ -15,7 +15,8 @@ const formatResponse = array => {
 		title: item.title ? item.title : item.name,
 		description: item.overview,
 		image: item.poster_path,
-		genres: item.genre_ids
+		genres: item.genre_ids,
+		rating: item.vote_average
 	}))
 }
 
@@ -33,5 +34,11 @@ export const getPopularMovies = (page) => axiosInstance("movie/popular", { param
 export const assetsByGenres = (genres) =>  Promise.all([
 	axiosInstance("discover/movie",{ params: { with_genres: genres }}),
 	axiosInstance("discover/tv",{ params: { with_genres: genres }})])
+	.then(resp => formatResponse( resp[0].data.results.concat(resp[1].data.results)))
+	.catch(error => console.log(error.message))
+
+export const searchMovieAndTv = query => Promise.all([
+	axiosInstance("search/movie", { params: { query: query }}),
+	axiosInstance("search/tv",{ params: { query: query }})])
 	.then(resp => formatResponse( resp[0].data.results.concat(resp[1].data.results)))
 	.catch(error => console.log(error.message))
