@@ -87,5 +87,7 @@ Note: I do not have a macbook or iphone so I could not test on ios unfortunatell
 ## utils/hoc
   I have made a higher order component which simply wraps the component and returns a spinner in case the results from request are still loading, otherwise it simply returns the component
   
+  LATE EDIT: Switched back to using react-native-slider because the slider from react native elements doesn't work properly and I don't have time to investigate and fix it. 
+  
   
 
