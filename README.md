@@ -1,5 +1,7 @@
 # Documentation
 
+Note: I do not have a macbook or iphone so I could not test on ios unfortunatelly, hope it's all okay there as well:) 
+
 ## Video Demo :)
 ![videoGif](https://user-images.githubusercontent.com/33875320/117580500-debd5b00-b100-11eb-9c60-2bebd0872fb5.gif)
 
