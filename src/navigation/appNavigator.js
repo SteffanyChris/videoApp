@@ -34,7 +34,7 @@ export default function AppNavigator() {
 					})}
 				/>
 				<Stack.Screen name='Details' component={MovieDetails} />
-				<Stack.Screen name='Search' component={Search} />
+				<Stack.Screen name='Search' component={Search} options={{ title: '' }} />
 				<Stack.Screen name='Video' component={VideoPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
