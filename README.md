@@ -1,5 +1,15 @@
 # Documentation
 
+## Video Demo :)
+![videoGif](https://user-images.githubusercontent.com/33875320/117580500-debd5b00-b100-11eb-9c60-2bebd0872fb5.gif)
+
+## Search Demo :) 
+![searchDemo](https://user-images.githubusercontent.com/33875320/117580479-c8af9a80-b100-11eb-882b-6fb42c0bb0ac.gif)
+
+## Lazy loading demo :)
+![laziLodadingDemo](https://user-images.githubusercontent.com/33875320/117580513-ebda4a00-b100-11eb-8810-b10cbbfea8fe.gif)
+
+
 ## Usage
 
 ##### Clone the repository
