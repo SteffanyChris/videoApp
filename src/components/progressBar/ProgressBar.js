@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from 'react-native-slider';
+import {Slider} from 'react-native-elements';
 import {View, Text} from 'react-native';
 
 import styles from './ProgressBar.styles';
