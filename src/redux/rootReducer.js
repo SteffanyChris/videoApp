@@ -1,15 +1,15 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import moviesReducer from './movies/reducer';
 import tvReducer from './tv/reducer';
 import genresReducer from './assetsByGenre/reducer';
-import searchReducer from './search/reducer'
+import searchReducer from './search/reducer';
 
-/* We use combineReducers in case the application gets more complex 
-*   and we need to add more reducers
-*/
+/* We use combineReducers in case the application gets more complex
+ *   and we need to add more reducers
+ */
 export default combineReducers({
-    movies: moviesReducer,
-    tv: tvReducer,
-    assetsByGenres: genresReducer,
-    search: searchReducer
-})
+  movies: moviesReducer,
+  tv: tvReducer,
+  assetsByGenres: genresReducer,
+  search: searchReducer,
+});

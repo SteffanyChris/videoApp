@@ -1,13 +1,13 @@
-import { createSelector } from 'reselect';
+import {createSelector} from 'reselect';
 
-const selectSearch = state => state.search
+const selectSearch = state => state.search;
 
 export const selectSearchResults = createSelector(
-	[selectSearch],
-	search => search.searchResults
-)
+  [selectSearch],
+  search => search.searchResults,
+);
 
 export const selectSearchIsLoading = createSelector(
-	selectSearch,
-	search => search.isLoading
-)
+  selectSearch,
+  search => search.isLoading,
+);
